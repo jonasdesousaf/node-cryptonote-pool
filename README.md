@@ -443,6 +443,23 @@ Credits
 * [Wolf0](https://bitcointalk.org/index.php?action=profile;u=80740) - Helped try to deobfuscate some of the daemon code for getting a bug fixed
 * [Tacotime](https://bitcointalk.org/index.php?action=profile;u=19270) - helping with figuring out certain problems and lead the bounty for this project's creation
 
+#FIXING ERROR ON NPM UPDATE YANG MEMBUAT PARA POLLER JANCUKERS SEKALI
+
+The error, for me, was gcc-[6-7] and the older node 6 pulled in via the installer script. First, install node 7 with this ppa:
+https://www.ubuntuupdates.org/ppa/nodejs_7.x
+
+Then:
+apt-get install gcc-5 g++-5 -y && 
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
+
+and:
+update-alternatives --config gcc
+to select gcc-5 as default.
+
+Skipping the sudo passwordless stuff and installer script, I cloned the git repository and "npm install" inside xmr-node-proxy works, thus, "npm install cryptonote-util" does too.
+
+It's late, I'm tired, hope this makes sense :-) If not post your errors...
+
 License
 -------
 Released under the GNU General Public License v2
